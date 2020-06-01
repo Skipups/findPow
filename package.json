@@ -1,0 +1,48 @@
+{
+  "name": "findPow",
+  "version": "1.0.0",
+  "description": "hi there",
+  "main": "app.js",
+  "scripts": {
+    "test": "",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "dev": "parcel src/index.html",
+    "start:server": " node server/index.js",
+    "seed": "node seed.js",
+    "start:dev": "npm run dev & npm run start:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skipups/findPow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skipups/findPow/issues"
+  },
+  "homepage": "https://github.com/Skipups/findPow#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "express": "^4.17.1",
+    "global": "^4.4.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sequelize": "^5.21.11"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5"
+  }
+}
