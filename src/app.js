@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Weather from "./Weather";
 
 class App extends React.Component {
   render() {
-    return <div>HI!!!!</div>;
+    return (
+      <div>
+        <div>HI!!!!</div>;
+        <Weather />
+      </div>
+    );
   }
 }
 

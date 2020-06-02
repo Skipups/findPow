@@ -11,7 +11,10 @@ Resort.belongsToMany(Pass, {
   through: "ResortsPasses",
   foreignKey: "resortId",
 });
-Pass.belongsToMany(Resort, { throgh: "ResortsPasses", foreignKey: "passId" });
+Pass.belongsToMany(Resort, {
+  through: "ResortsPasses",
+  foreignKey: "passId",
+});
 
 module.exports = {
   Pass,
