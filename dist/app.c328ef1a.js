@@ -57078,7 +57078,8 @@ var isNode = function (obj) {
 };
 },{"./parse":"../node_modules/cheerio/lib/parse.js","./options":"../node_modules/cheerio/lib/options.js","./utils":"../node_modules/cheerio/lib/utils.js","lodash/assignIn":"../node_modules/lodash/assignIn.js","lodash/bind":"../node_modules/lodash/bind.js","lodash/forEach":"../node_modules/lodash/forEach.js","lodash/defaults":"../node_modules/lodash/defaults.js","./api/attributes":"../node_modules/cheerio/lib/api/attributes.js","./api/traversing":"../node_modules/cheerio/lib/api/traversing.js","./api/manipulation":"../node_modules/cheerio/lib/api/manipulation.js","./api/css":"../node_modules/cheerio/lib/api/css.js","./api/forms":"../node_modules/cheerio/lib/api/forms.js","./static":"../node_modules/cheerio/lib/static.js"}],"../node_modules/cheerio/package.json":[function(require,module,exports) {
 module.exports = {
-  "_from": "cheerio@^1.0.0-rc.3",
+  "_args": [["cheerio@1.0.0-rc.3", "C:\\Users\\nries\\dev\\findPow"]],
+  "_from": "cheerio@1.0.0-rc.3",
   "_id": "cheerio@1.0.0-rc.3",
   "_inBundle": false,
   "_integrity": "sha512-0td5ijfUPuubwLUu0OBoe98gZj8C/AA+RW3v67GPlGOrvxWjZmBXiBCRU+I8VEiNyJzjth40POfHiz2RB3gImA==",
@@ -57091,20 +57092,19 @@ module.exports = {
     "nth-check": "1.0.2"
   },
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cheerio@^1.0.0-rc.3",
+    "raw": "cheerio@1.0.0-rc.3",
     "name": "cheerio",
     "escapedName": "cheerio",
-    "rawSpec": "^1.0.0-rc.3",
+    "rawSpec": "1.0.0-rc.3",
     "saveSpec": null,
-    "fetchSpec": "^1.0.0-rc.3"
+    "fetchSpec": "1.0.0-rc.3"
   },
   "_requiredBy": ["/snow-forecast-sfr"],
   "_resolved": "https://registry.npmjs.org/cheerio/-/cheerio-1.0.0-rc.3.tgz",
-  "_shasum": "094636d425b2e9c0f4eb91a46c05630c9a1a8bf6",
-  "_spec": "cheerio@^1.0.0-rc.3",
-  "_where": "/Users/svetlanarovinsky/projects/findPow/node_modules/snow-forecast-sfr",
+  "_spec": "1.0.0-rc.3",
+  "_where": "C:\\Users\\nries\\dev\\findPow",
   "author": {
     "name": "Matt Mueller",
     "email": "mattmuelle@gmail.com",
@@ -57113,7 +57113,6 @@ module.exports = {
   "bugs": {
     "url": "https://github.com/cheeriojs/cheerio/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "css-select": "~1.2.0",
     "dom-serializer": "~0.1.1",
@@ -57122,7 +57121,6 @@ module.exports = {
     "lodash": "^4.15.0",
     "parse5": "^3.0.1"
   },
-  "deprecated": false,
   "description": "Tiny, fast, and elegant implementation of core jQuery designed specifically for the server",
   "devDependencies": {
     "benchmark": "^2.1.0",
@@ -57622,13 +57620,9 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _snowForecastSfr = _interopRequireWildcard(require("snow-forecast-sfr"));
+var _snowForecastSfr = _interopRequireDefault(require("snow-forecast-sfr"));
 
 var _colorName = require("color-name");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57678,14 +57672,28 @@ var Weather = /*#__PURE__*/function (_React$Component) {
   _createClass(Weather, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log(_snowForecastSfr.default);
+      var snow = _snowForecastSfr.default.default;
       var weather = [];
-
-      _snowForecastSfr.default.parseResort("Snowbird", "mid", function (result) {
-        console.log(result);
-        return weather.concat(result);
-      }, {
-        inMetric: false
-      });
+      var _window = window,
+          fetch = _window.fetch;
+      fetch('/api/snowRequest').then(function (res) {
+        return res.json();
+      }).then(function (d) {
+        console.log('response = ', d);
+      }).catch(function (e) {
+        console.log('e ', e);
+      }); // snow.parseResort(
+      //   "Snowbird",
+      //   "mid",
+      //   function (result) {
+      //     console.log(result);
+      //     return weather.concat(result);
+      //   },
+      //   {
+      //     inMetric: false,
+      //   }
+      // );
 
       this.setState({
         weather: weather
@@ -57788,7 +57796,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59507" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58369" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,5 +1,5 @@
 import React from "react";
-import SnowRequest, { IForecast } from "snow-forecast-sfr";
+import SnowRequest from "snow-forecast-sfr";
 import { thistle } from "color-name";
 
 //list of all epic resorts
@@ -22,21 +22,32 @@ class Weather extends React.Component {
     };
   }
   componentDidMount() {
+    console.log(SnowRequest)
+    const snow = SnowRequest.default
     let weather = [];
-    SnowRequest.parseResort(
-      "Snowbird",
-      "mid",
-      function (result) {
-        console.log(result);
-        return weather.concat(result);
-      },
-      {
-        inMetric: false,
-      }
-    );
+    const { fetch } = window
+    fetch('/api/snowRequest').then(res => {
+      return res.json()
+    }).then(d => {
+      console.log('response = ', d)
+    }).catch(e => {
+      console.log('e ', e)
+    })
+    // snow.parseResort(
+    //   "Snowbird",
+    //   "mid",
+    //   function (result) {
+    //     console.log(result);
+    //     return weather.concat(result);
+    //   },
+    //   {
+    //     inMetric: false,
+    //   }
+    // );
     this.setState({ weather });
   }
   render() {
+    ikonResorts.map(_r => <ResortCard />)
     return (
       <div>
         <h1>Weather!</h1>

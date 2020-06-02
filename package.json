@@ -7,7 +7,7 @@
     "test": "",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
-    "dev": "parcel src/index.html",
+    "dev": "parcel watch src/index.html",
     "start:server": "node server/index.js",
     "start": "node server/index.js",
     "seed": "node seed.js",
