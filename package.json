@@ -9,6 +9,7 @@
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
     "dev": "parcel src/index.html",
     "start:server": " node server/index.js",
+    "start": " node server/index.js",
     "seed": "node seed.js",
     "start:dev": "npm run dev & npm run start:server"
   },
