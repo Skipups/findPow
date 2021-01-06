@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Skipups/findPow#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "express": "^4.17.1",
     "global": "^4.4.0",
